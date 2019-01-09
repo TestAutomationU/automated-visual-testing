@@ -55,4 +55,10 @@ public class BaseTests {
         eyes.close();
     }
 
+    public void validateFrame(String locator){
+        eyes.open(driver, "The Internet", Thread.currentThread().getStackTrace()[2].getMethodName());
+        eyes.checkFrame(locator);
+        eyes.close();
+    }
+
 }
