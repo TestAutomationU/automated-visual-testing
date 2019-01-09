@@ -7,7 +7,6 @@ import pages.SearchPage;
 
 public class SearchTests extends BaseTests {
 
-    private String APP_NAME = "Automation Bookstore";
     private SearchPage page = new SearchPage(driver);
 
     @BeforeClass
@@ -19,14 +18,14 @@ public class SearchTests extends BaseTests {
     public void testSearchByFullTitle(){
         String title = "Agile Testing";
         page.search(title);
-        validateWindow(APP_NAME);
+        eyesManager.validateWindow();
     }
 
     @Test
     public void testSearchByFullTitle_Element(){
         String title = "Agile Testing";
         page.search(title);
-        validateElement(By.id("pid3"));
+        eyesManager.validateElement(By.id("pid3"));
         Assert.assertEquals("Number of books returned",
                 1, page.getNumberOfVisibleBooks());
     }

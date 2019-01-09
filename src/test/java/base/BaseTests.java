@@ -1,11 +1,11 @@
 package base;
 
-import com.applitools.eyes.selenium.Eyes;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,7 +15,7 @@ import java.util.Properties;
 public class BaseTests {
 
     protected static WebDriver driver;
-    protected static Eyes eyes;
+    protected static EyesManager eyesManager;
 
     @BeforeClass
     public static void setUp() {
@@ -28,37 +28,13 @@ public class BaseTests {
         }
 
         driver = new ChromeDriver();
-        initiateEyes();
+        eyesManager = new EyesManager(driver, "The Internet");
     }
 
     @AfterClass
     public static void tearDown() {
         driver.quit();
-        eyes.abortIfNotClosed();
-    }
-
-    private static void initiateEyes(){
-        eyes = new Eyes();
-        eyes.setApiKey(System.getProperty("applitools.api.key"));
-    }
-
-    public void validateWindow(String appName){
-        eyes.open(driver, appName, Thread.currentThread().getStackTrace()[2].getMethodName());
-        eyes.setForceFullPageScreenshot(true);
-        eyes.checkWindow();
-        eyes.close();
-    }
-
-    public void validateElement(By locator){
-        eyes.open(driver, "Automation Bookstore", Thread.currentThread().getStackTrace()[2].getMethodName());
-        eyes.checkElement(locator);
-        eyes.close();
-    }
-
-    public void validateFrame(String locator){
-        eyes.open(driver, "The Internet", Thread.currentThread().getStackTrace()[2].getMethodName());
-        eyes.checkFrame(locator);
-        eyes.close();
+        eyesManager.abort();
     }
 
 }
