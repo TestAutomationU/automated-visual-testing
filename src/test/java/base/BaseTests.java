@@ -1,18 +1,17 @@
 package base;
 
+import com.applitools.eyes.MatchLevel;
 import com.applitools.eyes.selenium.Eyes;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;
 
 import pages.SearchPage;
-import pages.SortableDataTablesPage;
 
 public class BaseTests {
 
@@ -49,8 +48,8 @@ public class BaseTests {
     }
 
     public void validateWindow(){
-        eyes.open(driver, "Automation Bookstore",
-                Thread.currentThread().getStackTrace()[2].getMethodName());
+        eyes.open(driver, "Automation Bookstore", Thread.currentThread().getStackTrace()[2].getMethodName());
+        eyes.setMatchLevel(MatchLevel.CONTENT);
         eyes.checkWindow();
         eyes.close();
     }

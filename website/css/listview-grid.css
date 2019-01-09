@@ -84,7 +84,11 @@
 		bottom: auto;
 		/* Custom styling. */
 		background: #990099;
+<<<<<<< HEAD
 		background: rgba(153,0,153,.85);
+=======
+		background: /*rgba(153,0,153,.85);*/ #ff0000;
+>>>>>>> CONTENT match level
 		-webkit-border-top-right-radius: inherit;
 		border-top-right-radius: inherit;
 		-webkit-border-bottom-left-radius: inherit;
