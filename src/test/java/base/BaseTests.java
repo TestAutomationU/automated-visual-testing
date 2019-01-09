@@ -11,12 +11,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;
 
-import pages.SearchPage;
-
 public class BaseTests {
 
     protected static WebDriver driver;
-    protected static SearchPage page;
     protected static Eyes eyes;
 
     @BeforeClass
@@ -33,7 +30,6 @@ public class BaseTests {
         initiateEyes();
 
         driver.get(System.getProperty("site.url"));
-        page = new SearchPage(driver);
     }
 
     @AfterClass
