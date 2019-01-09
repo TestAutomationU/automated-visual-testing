@@ -48,8 +48,8 @@ public class BaseTests {
     }
 
     public void validateWindow(){
-        eyes.open(driver, "Automation Bookstore", Thread.currentThread().getStackTrace()[2].getMethodName());
-        eyes.setMatchLevel(MatchLevel.CONTENT);
+        eyes.open(driver, "The Internet", Thread.currentThread().getStackTrace()[2].getMethodName());
+        eyes.setMatchLevel(MatchLevel.LAYOUT);
         eyes.checkWindow();
         eyes.close();
     }
